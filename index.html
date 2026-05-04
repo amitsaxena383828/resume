@@ -1,328 +1,748 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Amit Kumar | Senior Software Engineer</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Amit Kumar | Senior Android Developer</title>
+  <meta name="description" content="Amit Kumar - Senior Android Developer with 7+ years of experience in Kotlin, Java, Jetpack Compose, Firebase, MVVM, Clean Architecture and scalable Android apps." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
   <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
     body {
-      margin:0;
-      padding:0;
-      background:linear-gradient(135deg,#EEF2F7,#F8FAFC);
-      font-family:'Inter', Arial, sans-serif;
-      color:#1F2937;
+      font-family: "Inter", sans-serif;
+      background: #07111f;
+      color: #e5eefc;
+      line-height: 1.6;
+      overflow-x: hidden;
     }
 
     a {
-      text-decoration:none;
-      color:#2563EB;
-      font-weight:600;
+      color: inherit;
+      text-decoration: none;
     }
 
-    h1,h2,h3 { margin:0; }
+    .page-bg {
+      position: fixed;
+      inset: 0;
+      z-index: -1;
+      background:
+        radial-gradient(circle at 15% 20%, rgba(56, 189, 248, 0.22), transparent 35%),
+        radial-gradient(circle at 80% 10%, rgba(34, 197, 94, 0.18), transparent 30%),
+        radial-gradient(circle at 50% 90%, rgba(168, 85, 247, 0.14), transparent 30%),
+        #07111f;
+    }
 
     .container {
-      max-width:1000px;
-      margin:60px auto;
-      background:#fff;
-      border-radius:20px;
-      box-shadow:0 30px 70px rgba(0,0,0,0.08);
-      overflow:hidden;
+      width: min(1120px, 92%);
+      margin: 0 auto;
     }
 
-    .header {
-      background:linear-gradient(135deg,#1F3A5F,#2563EB);
-      padding:70px 40px;
-      text-align:center;
-      color:#fff;
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(7, 17, 31, 0.82);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(148, 163, 184, 0.16);
     }
 
-    .header img {
-      border-radius:50%;
-      margin-bottom:20px;
-      border:5px solid rgba(255,255,255,0.3);
+    nav {
+      height: 72px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
     }
 
-    .header h1 {
-      font-size:40px;
-      font-weight:800;
-      letter-spacing:2px;
+    .logo {
+      font-weight: 800;
+      font-size: 1.25rem;
+      letter-spacing: -0.04em;
     }
 
-    .header p {
-      margin-top:15px;
-      font-size:17px;
-      opacity:0.95;
+    .logo span {
+      color: #38bdf8;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 28px;
+      color: #cbd5e1;
+      font-weight: 500;
+      font-size: 0.95rem;
+    }
+
+    .nav-links a:hover {
+      color: #38bdf8;
+    }
+
+    .hero {
+      min-height: calc(100vh - 72px);
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      align-items: center;
+      gap: 48px;
+      padding: 80px 0;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 14px;
+      border-radius: 999px;
+      background: rgba(56, 189, 248, 0.1);
+      border: 1px solid rgba(56, 189, 248, 0.22);
+      color: #7dd3fc;
+      font-weight: 600;
+      font-size: 0.9rem;
+      margin-bottom: 24px;
+    }
+
+    h1 {
+      font-size: clamp(2.7rem, 7vw, 5.8rem);
+      line-height: 0.95;
+      letter-spacing: -0.08em;
+      margin-bottom: 22px;
+    }
+
+    .gradient-text {
+      background: linear-gradient(135deg, #38bdf8, #22c55e);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .hero-subtitle {
+      color: #cbd5e1;
+      font-size: clamp(1.05rem, 2vw, 1.3rem);
+      max-width: 720px;
+      margin-bottom: 34px;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      margin-bottom: 42px;
     }
 
     .btn {
-      display:inline-block;
-      margin-top:25px;
-      padding:12px 22px;
-      background:#fff;
-      color:#1F3A5F;
-      border-radius:30px;
-      font-size:14px;
-      font-weight:600;
-      transition:0.3s;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 48px;
+      padding: 0 22px;
+      border-radius: 14px;
+      font-weight: 700;
+      transition: 0.25s ease;
     }
 
-    .btn:hover {
-      background:#1F3A5F;
-      color:#fff;
+    .btn-primary {
+      background: #38bdf8;
+      color: #04111f;
+      box-shadow: 0 18px 40px rgba(56, 189, 248, 0.22);
     }
 
-    .section {
-      padding:60px 70px;
+    .btn-primary:hover {
+      transform: translateY(-3px);
+      background: #7dd3fc;
     }
 
-    .section h2 {
-      font-size:26px;
-      font-weight:700;
-      margin-bottom:25px;
-      position:relative;
+    .btn-outline {
+      border: 1px solid rgba(148, 163, 184, 0.35);
+      color: #e2e8f0;
+      background: rgba(15, 23, 42, 0.5);
     }
 
-    .section h2::after {
-      content:'';
-      width:60px;
-      height:4px;
-      background:#2563EB;
-      position:absolute;
-      bottom:-10px;
-      left:0;
-      border-radius:4px;
+    .btn-outline:hover {
+      transform: translateY(-3px);
+      border-color: #38bdf8;
+      color: #38bdf8;
     }
 
-    .summary {
-      font-size:16px;
-      line-height:1.8;
-      color:#4B5563;
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      max-width: 620px;
     }
 
-    .skills span {
-      display:inline-block;
-      margin:7px 10px;
-      background:#EEF2FF;
-      color:#1E3A8A;
-      padding:9px 15px;
-      border-radius:25px;
-      font-size:13px;
-      transition:all 0.25s ease;
+    .stat-card, .profile-card, .section-card, .project-card, .skill-card, .timeline-item {
+      background: rgba(15, 23, 42, 0.68);
+      border: 1px solid rgba(148, 163, 184, 0.18);
+      border-radius: 24px;
+      box-shadow: 0 24px 80px rgba(0, 0, 0, 0.18);
     }
 
-    .skills span:hover {
-      background:#2563EB;
-      color:#fff;
-      transform:translateY(-3px);
-      box-shadow:0 10px 20px rgba(37,99,235,0.25);
+    .stat-card {
+      padding: 20px;
     }
 
-    .divider {
-      height:1px;
-      background:#E5E7EB;
-      border:none;
-      margin:0 70px;
+    .stat-card strong {
+      display: block;
+      font-size: 1.8rem;
+      color: #ffffff;
+      margin-bottom: 4px;
     }
 
-    .experience-item {
-      margin-bottom:35px;
+    .stat-card span {
+      color: #94a3b8;
+      font-size: 0.9rem;
     }
 
-    .experience-item h3 {
-      font-size:20px;
-      margin-bottom:5px;
+    .profile-card {
+      position: relative;
+      padding: 28px;
+      overflow: hidden;
     }
 
-    .experience-item span {
-      font-size:14px;
-      color:#6B7280;
+    .profile-card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(56, 189, 248, 0.12), rgba(34, 197, 94, 0.08));
+      pointer-events: none;
     }
 
-    .experience-item ul {
-      margin-top:12px;
-      padding-left:20px;
-      color:#4B5563;
-      line-height:1.7;
-      font-size:15px;
+    .avatar {
+      position: relative;
+      width: 160px;
+      height: 160px;
+      border-radius: 50%;
+      margin: 0 auto 24px;
+      background: linear-gradient(135deg, #38bdf8, #22c55e);
+      display: grid;
+      place-items: center;
+      font-size: 3.8rem;
+      font-weight: 800;
+      color: #04111f;
+      box-shadow: 0 24px 70px rgba(56, 189, 248, 0.26);
+    }
+
+    .profile-card h2 {
+      position: relative;
+      text-align: center;
+      font-size: 1.5rem;
+      margin-bottom: 8px;
+    }
+
+    .profile-card p {
+      position: relative;
+      text-align: center;
+      color: #cbd5e1;
+      margin-bottom: 22px;
+    }
+
+    .profile-stack {
+      position: relative;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px;
+    }
+
+    .chip {
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: rgba(148, 163, 184, 0.1);
+      border: 1px solid rgba(148, 163, 184, 0.16);
+      color: #dbeafe;
+      font-size: 0.85rem;
+      font-weight: 600;
+    }
+
+    section {
+      padding: 90px 0;
+    }
+
+    .section-heading {
+      max-width: 760px;
+      margin-bottom: 38px;
+    }
+
+    .section-heading span {
+      color: #38bdf8;
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      font-size: 0.8rem;
+      text-transform: uppercase;
+    }
+
+    .section-heading h2 {
+      margin-top: 10px;
+      font-size: clamp(2rem, 4vw, 3.2rem);
+      line-height: 1.05;
+      letter-spacing: -0.06em;
+    }
+
+    .section-heading p {
+      margin-top: 16px;
+      color: #94a3b8;
+      font-size: 1.05rem;
+    }
+
+    .section-card {
+      padding: 32px;
+      color: #cbd5e1;
+      font-size: 1.05rem;
+    }
+
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+    }
+
+    .skill-card {
+      padding: 24px;
+    }
+
+    .skill-card h3 {
+      margin-bottom: 16px;
+      color: #ffffff;
+      font-size: 1.05rem;
+    }
+
+    .skill-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
     }
 
     .project-card {
-      border-radius:16px;
-      padding:35px;
-      margin-bottom:35px;
-      background:#F9FAFB;
-      transition:all 0.3s ease;
+      padding: 28px;
+      transition: 0.25s ease;
     }
 
     .project-card:hover {
-      transform:translateY(-6px);
-      box-shadow:0 25px 45px rgba(37,99,235,0.15);
-      background:#fff;
+      transform: translateY(-6px);
+      border-color: rgba(56, 189, 248, 0.45);
     }
 
     .project-card h3 {
-      font-size:22px;
-      margin-bottom:14px;
-      color:#111827;
+      font-size: 1.35rem;
+      margin-bottom: 12px;
     }
 
     .project-card p {
-      color:#4B5563;
-      font-size:15px;
-      line-height:1.7;
-      margin-bottom:14px;
+      color: #a8b4c7;
+      margin-bottom: 20px;
     }
 
-    .footer {
-      background:#F3F4F6;
-      padding:45px;
-      text-align:center;
-      font-size:14px;
-      color:#6B7280;
+    .project-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 22px;
     }
 
-    .footer a {
-      margin:0 10px;
+    .project-link {
+      color: #38bdf8;
+      font-weight: 800;
     }
 
-    @media(max-width:900px){
-      .section { padding:40px 30px; }
-      .divider { margin:0 30px; }
-      .container { margin:30px 15px; }
+    .timeline {
+      display: grid;
+      gap: 18px;
     }
 
+    .timeline-item {
+      padding: 24px;
+      display: grid;
+      grid-template-columns: 220px 1fr;
+      gap: 24px;
+    }
+
+    .timeline-date {
+      color: #38bdf8;
+      font-weight: 800;
+    }
+
+    .timeline-item h3 {
+      margin-bottom: 8px;
+    }
+
+    .timeline-item p {
+      color: #a8b4c7;
+    }
+
+    .contact-card {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      align-items: center;
+    }
+
+    .contact-links {
+      display: grid;
+      gap: 14px;
+    }
+
+    .contact-link {
+      padding: 16px 18px;
+      border-radius: 16px;
+      background: rgba(148, 163, 184, 0.1);
+      border: 1px solid rgba(148, 163, 184, 0.16);
+      color: #e2e8f0;
+      font-weight: 700;
+    }
+
+    .contact-link:hover {
+      color: #38bdf8;
+      border-color: rgba(56, 189, 248, 0.45);
+    }
+
+    footer {
+      padding: 32px 0;
+      color: #94a3b8;
+      text-align: center;
+      border-top: 1px solid rgba(148, 163, 184, 0.16);
+    }
+
+    @media (max-width: 900px) {
+      .hero,
+      .contact-card {
+        grid-template-columns: 1fr;
+      }
+
+      .skills-grid,
+      .projects-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .timeline-item {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 640px) {
+      nav {
+        height: auto;
+        padding: 18px 0;
+        align-items: flex-start;
+        gap: 16px;
+        flex-direction: column;
+      }
+
+      .nav-links {
+        gap: 14px;
+        flex-wrap: wrap;
+      }
+
+      .hero {
+        padding-top: 54px;
+      }
+
+      .stats,
+      .skills-grid,
+      .projects-grid {
+        grid-template-columns: 1fr;
+      }
+
+      section {
+        padding: 64px 0;
+      }
+    }
   </style>
 </head>
 <body>
+  <div class="page-bg"></div>
 
-<div class="container">
-
-  <div class="header">
-    <img src="images/amit_kumar.png" alt="Amit Kumar">
-    <h1>AMIT KUMAR</h1>
-    <p>Senior Software Engineer • Android Architect • AI-Integrated Systems</p>
-    <a href="images/Resume_Amit_Kumar.pdf" class="btn" target="_blank">Download Resume</a>
-  </div>
-
-  <div class="section">
-    <h2>Professional Summary</h2>
-    <p class="summary">
-      Senior Software Engineer with 7+ years of experience designing and delivering scalable Android applications and backend-integrated systems. 
-      Strong expertise in clean architecture, MVVM, REST API integration, performance optimization, and Generative AI API integration. 
-      Experienced in full product lifecycle from concept to production deployment on Google Play.
-    </p>
-  </div>
-
-  <hr class="divider">
-
-  <div class="section">
-    <h2>Professional Experience</h2>
-
-    <div class="experience-item">
-      <h3>Senior Android Developer</h3>
-      <span>7+ Years Experience</span>
-      <ul>
-        <li>Designed and developed scalable Android applications using MVVM architecture.</li>
-        <li>Integrated REST APIs and optimized network handling for performance and stability.</li>
-        <li>Implemented secure payment SDK integrations and real-time data handling.</li>
-        <li>Integrated Generative AI APIs to enable intelligent and personalized app features.</li>
-        <li>Managed Play Store deployments, versioning, testing tracks, and production releases.</li>
-      </ul>
+  <header>
+    <div class="container">
+      <nav>
+        <a href="#home" class="logo">Amit<span>.</span></a>
+        <div class="nav-links">
+          <a href="#about">About</a>
+          <a href="#skills">Skills</a>
+          <a href="#projects">Projects</a>
+          <a href="#experience">Experience</a>
+          <a href="#contact">Contact</a>
+        </div>
+      </nav>
     </div>
+  </header>
 
-  </div>
+  <main>
+    <section class="hero container" id="home">
+      <div>
+        <div class="badge">Available for Android Developer Opportunities</div>
+        <h1>Hi, I'm <span class="gradient-text">Amit Kumar</span></h1>
+        <p class="hero-subtitle">
+          Senior Android Developer with 7+ years of experience building scalable, high-performance mobile applications using Kotlin, Java, Jetpack Compose, Firebase, MVVM and Clean Architecture.
+        </p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="http://amitsaxena383828.github.io/resume/images/Resume_Amit_Kumar.pdf" target="_blank" rel="noopener">Download Resume</a>
+          <a class="btn btn-outline" href="#projects">View Projects</a>
+          <a class="btn btn-outline" href="#contact">Contact Me</a>
+        </div>
+        <div class="stats">
+          <div class="stat-card"><strong>7+</strong><span>Years Experience</span></div>
+          <div class="stat-card"><strong>10+</strong><span>Android Skills</span></div>
+          <div class="stat-card"><strong>4+</strong><span>Major Projects</span></div>
+        </div>
+      </div>
 
-  <hr class="divider">
+      <aside class="profile-card">
+        <div class="avatar">AK</div>
+          
+        <h2> Sr. Android Developer</h2>
+        <p>Android Architect | AI-Integrated Systems</p>
+        <div class="profile-stack">
+            <span class="chip">Kotlin</span>
+            <span class="chip">Java</span>
+            <span class="chip">Firebase</span>
+            <span class="chip">MVVM</span>
+            <span class="chip">XML</span>
+            <span class="chip">Jetpack Components</span>
+            <span class="chip">RoomDB</span>
+            <span class="chip">Clean Architecture</span>
+            <span class="chip">AI Integration</span>
+        </div>
+      </aside>
+    </section>
 
-  <div class="section">
-    <h2>Technical Skills</h2>
-    <div class="skills">
-      <span>Java</span><span>Kotlin</span><span>Python</span><span>C</span><span>C++</span>
-      <span>Android SDK</span><span>MVVM</span><span>MVP</span><span>MVC</span>
-      <span>Jetpack Compose</span><span>XML</span>
-      <span>REST API</span><span>Retrofit</span><span>Volley</span>
-      <span>Firebase</span><span>Crashlytics</span>
-      <span>SQLite</span><span>RoomDB</span>
-      <span>Payment SDK Integration</span>
-      <span>MySQL</span><span>Spring Boot</span><span>Microservices</span>
-      <span>Maven</span><span>Gradle</span>
-      <span>Git</span><span>GitHub</span><span>Bitbucket</span>
-      <span>SVN</span><span>Jira</span><span>Zoho</span>
-      <span>Trello</span><span>Postman</span>
-      <span>Android Studio</span><span>IntelliJ IDEA</span>
-      <span>Eclipse</span><span>NetBeans</span>
+    <section id="about">
+      <div class="container">
+        <div class="section-heading">
+          <span>About Me</span>
+          <h2>I build reliable Android apps with clean architecture and strong user experience.</h2>
+          <p>Focused on scalable mobile products, API integration, Firebase-based apps, performance optimization, and production-ready delivery.</p>
+        </div>
+        <div class="section-card">
+          <p>
+            I am a passionate Android Developer with hands-on experience in building modern Android applications using Java, Kotlin, Android Studio, Firebase, REST APIs and clean architecture principles. I have worked on end-to-end mobile app development including design, development, testing, deployment and maintenance.
+          </p>
+          <br />
+          <p>
+            My expertise includes MVVM, MVP, MVC, Jetpack Components, Retrofit, Volley, RoomDB, SQLite, Firebase, Crashlytics, payment SDK integration and performance-focused Android development. I enjoy creating high-quality, user-friendly mobile applications with clean code and scalable architecture.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section id="skills">
+      <div class="container">
+        <div class="section-heading">
+          <span>Technical Skills</span>
+          <h2>Android development stack</h2>
+        </div>
+        <div class="skills-grid">
+          <div class="skill-card">
+            <h3>Languages & Architecture</h3>
+            <div class="skill-list">
+                <span class="chip">Kotlin</span>
+                <span class="chip">Java</span>
+                <span class="chip">Python</span>
+                <span class="chip">C</span>
+                <span class="chip">C++</span>
+                <span class="chip">MVVM</span>
+                <span class="chip">MVI</span>
+                <span class="chip">MVP</span>
+                <span class="chip">MVC</span>
+                <span class="chip">Clean Architecture</span>
+                <span class="chip">SOLID Prenciples</span>
+            </div>
+          </div>
+          <div class="skill-card">
+            <h3>Android</h3>
+            <div class="skill-list">
+                <span class="chip">Android SDK</span>
+                <span class="chip">XML UI</span>
+                <span class="chip">RoomDB</span>
+                <span class="chip">SqLite</span>
+                <span class="chip">DataStore</span>
+                <span class="chip">Dependency Injection</span>
+                <span class="chip">LiveData</span>
+                <span class="chip">ViewModel</span>
+                <span class="chip">Navigation Graph</span>
+                <span class="chip">Corountine</span>
+                <span class="chip">Flow</span>
+                <span class="chip">Mavan</span>
+                <span class="chip">Gradle</span>
+                <span class="chip">Services</span>
+                <span class="chip">WorkManager</span>
+                <span class="chip">Gradle</span>
+                <span class="chip">Google Maps SDK </span>
+                <span class="chip">Payment SDK</span>
+            </div>
+          </div>
+          <div class="skill-card">
+            <h3>Backend & Tools</h3>
+            <div class="skill-list">
+                <span class="chip">Firebase</span>
+                <span class="chip">REST APIs</span>
+                <span class="chip">Retrofit</span>
+                <span class="chip">Volley</span>
+                <span class="chip">GSON</span>
+                <span class="chip">Postman</span>
+                <span class="chip">GitHub</span>
+                <span class="chip">BitBucket</span>
+                <span class="chip">Jira</span>
+                <span class="chip">Crashlytics</span>
+                <span class="chip">Spring Boot</span>
+                <span class="chip">Microservices</span>
+            </div>
+          </div>
+           <div class="skill-card">
+            <h3>AI & Generative AI Expertise</h3>
+            <div class="skill-list">
+              <span class="chip">Prompt Engineering</span>
+              <span class="chip">OpenAI / ChatGPT API Integration</span>
+              <span class="chip">Google Gemini API Integration</span>
+              <span class="chip">Grok AI Integration</span>
+              <span class="chip">AI-powered Android Features</span>
+              <span class="chip">Workflow Automation using AI</span>
+              <span class="chip">Personalization Systems</span>
+              <span class="chip">CoPilot</span>
+              <span class="chip">Codex</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects">
+      <div class="container">
+        <div class="section-heading">
+          <span>Major Projects</span>
+          <h2>Selected Android applications</h2>
+          <p>Real products across EdTech, delivery, marketplace and security management domains.</p>
+        </div>
+        <div class="projects-grid">
+          <article class="project-card">
+            <h3>UBLAMP</h3>
+            <p>AI-powered EdTech platform where students can check academic growth, attempt tests including Maths, Fluency, essay writing and MCQs, with teacher-based evaluation.</p>
+            <div class="project-tags">
+              <span class="chip">Android</span>
+              <span class="chip">Kotlin</span>
+              <span class="chip">Firebase</span>
+              <span class="chip">RoomDB</span>
+            </div>
+            <a class="project-link" href="https://www.readingtown.com" target="_blank" rel="noopener">View Project →</a>
+          </article>
+
+          <article class="project-card">
+            <h3>Hand Over</h3>
+            <p>Food and grocery delivery Android application with customer and rider modules, designed for ordering, delivery tracking and service management.</p>
+            <div class="project-tags">
+              <span class="chip">Android</span>
+              <span class="chip">Firebase</span>
+              <span class="chip">Payment</span>
+              <span class="chip">Delivery App</span>
+            </div>
+            <a class="project-link" href="https://play.google.com" target="_blank" rel="noopener">View Project →</a>
+          </article>
+
+          <article class="project-card">
+            <h3>Virtual Diamond Boutique</h3>
+            <p>Jewelry marketplace platform for buying and selling diamonds, gemstones, lab-grown diamonds and fine jewelry with product discovery features.</p>
+            <div class="project-tags">
+              <span class="chip">Android</span>
+              <span class="chip">REST API</span>
+              <span class="chip">Firebase</span>
+              <span class="chip">Marketplace</span>
+            </div>
+            <a class="project-link" href="https://play.google.com" target="_blank" rel="noopener">View Project →</a>
+          </article>
+
+          <article class="project-card">
+            <h3>Sova Security</h3>
+            <p>Electronic guard tour and security management platform with live dispatch, visitor badges, task management, NFC/Bluetooth checkpoints and real-time tracking.</p>
+            <div class="project-tags">
+              <span class="chip">Android</span>
+              <span class="chip">NFC</span>
+              <span class="chip">Bluetooth</span>
+              <span class="chip">Maps</span>
+            </div>
+            <a class="project-link" href="https://play.google.com" target="_blank" rel="noopener">View Project →</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="experience">
+      <div class="container">
+        <div class="section-heading">
+          <span>Experience</span>
+          <h2>Professional journey</h2>
+        </div>
+        <div class="timeline">
+          <div class="timeline-item">
+            <div class="timeline-date">2023 — 2026</div>
+            <div>
+              <h3>Senior Android Developer</h3>
+              <p>Worked on scalable Android applications, Firebase integration, REST APIs, performance optimization, clean architecture and production delivery.</p>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-date">2021 — 2023</div>
+            <div>
+              <h3>Android Developer</h3>
+              <p>Developed Android apps using Kotlin, Java, MVVM, XML UI, Jetpack components, Retrofit, RoomDB and Firebase services.</p>
+            </div>
+          </div>
+            <div class="timeline-item">
+            <div class="timeline-date">2018 - 2021</div>
+            <div>
+              <h3>Mobile Application Developer</h3>
+              <p>Built and maintained mobile application features, improved UI/UX, integrated APIs and supported app releases.</p>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-date">Earlier Experience</div>
+            <div>
+              <h3>Android Development Trainee (Self-Learning)</h3>
+              <p>Completed structured self-learning in Android development, developed small applications/projects, gained hands-on experience with Kotlin, UI design, and API integration.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="container">
+        <div class="section-card contact-card">
+          <div>
+            <div class="section-heading" style="margin-bottom: 0;">
+              <span>Contact</span>
+              <h2>Let's build something great.</h2>
+              <p>Feel free to reach out for Android developer roles, freelance work, collaboration or technical discussions.</p>
+            </div>
+          </div>
+          <div class="contact-links">
+            <a class="contact-link" href="mailto:amitsaxena383828@gmail.com">Email: amitsaxena383828@gmail.com</a>
+            <a class="contact-link" href="https://github.com/amit-project" target="_blank" rel="noopener">GitHub</a>
+            <a class="contact-link" href="https://www.linkedin.com/in/amitsaxena-" target="_blank" rel="noopener">LinkedIn</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      © 2026 Amit Kumar. All Rights Reserved.
     </div>
-  </div>
-
-  <hr class="divider">
-
-  <div class="section">
-    <h2>AI & Generative AI Expertise</h2>
-    <div class="skills">
-      <span>Prompt Engineering</span>
-      <span>OpenAI / ChatGPT API Integration</span>
-      <span>Google Gemini API Integration</span>
-      <span>Grok AI Integration</span>
-      <span>AI-powered Android Features</span>
-      <span>Workflow Automation using AI</span>
-      <span>Personalization Systems</span>
-    </div>
-  </div>
-
-  <hr class="divider">
-
-  <div class="section">
-    <h2>Projects</h2>
-
-    <div class="project-card">
-      <h3>UBLAMP — AI-powered EdTech Platform</h3>
-      <p>
-        UbLamp is an application in which a student can check their academic growth as per their standard. And also a student can give different type of tests like Maths, Fluency test essay writing test etc. And also can attempt MCQs test that will be evaluated later by the teacher and give marks accordingly.
-      </p>
-      <a href="https://www.readingtown.com/release-of-ublamp-the-ultimate-learning-and-management-platform/" target="_blank">View Project →</a>
-    </div>
-
-    <div class="project-card">
-      <h3>HandOver — Food & Grocery Delivery App</h3>
-      <p>
-        Hand Over is its own product that offer to deliver groceries and food items to their customers. It is an Android application that has two parts. First is for the rider who deliver the item to the customers and the second one is for the customer who is going to get delivery from the rider. this application is the competitor for other apps like zomato or swiggy etc.
-      </p>
-      <a href="https://play.google.com/store/apps/details?id=com.handover.customerapp&pli=1" target="_blank">View on Google Play →</a>
-    </div>
-
-    <div class="project-card">
-      <h3>VIRTUAL DIAMOND PRODUCT(VDB)</h3>
-      <p>
-        Virtual Diamond Boutique is the jewelry industry’s premier platform to buy and sell diamonds, color gemstones, lab-grown diamonds and fine jewelry. With over 25000 members worldwide, VDB was designed to work on any device, anywhere to connect jewelry industry buyers and sellers for more efficient, more effective, sourcing and selling.
-      </p>
-      <a href="https://play.google.com/store/apps/details?id=com.vdbapp.android" target="_blank">View on Google Play →</a>
-    </div>
-      
-    <div class="project-card">
-      <h3>Sova Security</h3>
-      <p>
-        The preferred electronic guard tour system and security management platform built for the hospitality industry and now available for other industries.<br/>
-        System includes live dispatch, electronic guard tour, lost and found, task management, visitor badge, package management, equipment checkout, persons of interest and more.
-        Full admin interface on the PC and also on the mobile device.
-        Works with NFC tags or Bluetooth beacons which serve as waypoints or checkpoints on a property guard tour.
-        Track users on a map in near real-time.
-      </p>
-      <a href="https://play.google.com/store/apps/details?id=com.sova.guardtour" target="_blank">View on Google Play →</a>
-    </div>
-
-  </div>
-
-  <div class="footer">
-    Amit Kumar • Senior Software Engineer <br><br>
-      Feel free to reach out for collaboration or opportunities!<br><br>
-    <a href="https://linkedin.com/in/amitsaxena-" target="_blank">LinkedIn</a> |
-    <a href="mailto:amitsaxena383828@gmail.com">Email</a>
-  </div>
-
-</div>
-
+  </footer>
 </body>
 </html>
